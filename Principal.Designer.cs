@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(pantalla_Marco));
             this.panel_Contenedor = new System.Windows.Forms.Panel();
+            this.panel_Citas = new System.Windows.Forms.Panel();
+            this.btn_Citas_Editar = new System.Windows.Forms.Button();
+            this.btn_Citas_Eliminar = new System.Windows.Forms.Button();
+            this.btn_Citas_Agregar = new System.Windows.Forms.Button();
+            this.panel_Citas_Dia = new System.Windows.Forms.Panel();
+            this.srl_Citas_Dia = new System.Windows.Forms.VScrollBar();
+            this.month_Calendario = new System.Windows.Forms.MonthCalendar();
             this.panel_Pacientes = new System.Windows.Forms.Panel();
             this.btn_Paciente_Buscar = new System.Windows.Forms.Button();
             this.btn_Paciente_Editar = new System.Windows.Forms.Button();
@@ -43,19 +50,12 @@
             this.btn_CitaCerrado = new System.Windows.Forms.Button();
             this.btn_PacienteCerrado = new System.Windows.Forms.Button();
             this.hamburguesa_Cerrada = new System.Windows.Forms.Button();
-            this.panel_Citas = new System.Windows.Forms.Panel();
-            this.month_Calendario = new System.Windows.Forms.MonthCalendar();
-            this.panel_Citas_Dia = new System.Windows.Forms.Panel();
-            this.srl_Citas_Dia = new System.Windows.Forms.VScrollBar();
-            this.btn_Citas_Agregar = new System.Windows.Forms.Button();
-            this.btn_Citas_Eliminar = new System.Windows.Forms.Button();
-            this.btn_Citas_Editar = new System.Windows.Forms.Button();
             this.panel_Contenedor.SuspendLayout();
+            this.panel_Citas.SuspendLayout();
+            this.panel_Citas_Dia.SuspendLayout();
             this.panel_Pacientes.SuspendLayout();
             this.panel_MenuAbierto.SuspendLayout();
             this.panel_MenuCerrado.SuspendLayout();
-            this.panel_Citas.SuspendLayout();
-            this.panel_Citas_Dia.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_Contenedor
@@ -67,6 +67,61 @@
             this.panel_Contenedor.Controls.Add(this.panel_MenuAbierto);
             this.panel_Contenedor.Controls.Add(this.panel_MenuCerrado);
             this.panel_Contenedor.Name = "panel_Contenedor";
+            // 
+            // panel_Citas
+            // 
+            this.panel_Citas.BackColor = System.Drawing.Color.Plum;
+            this.panel_Citas.Controls.Add(this.btn_Citas_Editar);
+            this.panel_Citas.Controls.Add(this.btn_Citas_Eliminar);
+            this.panel_Citas.Controls.Add(this.btn_Citas_Agregar);
+            this.panel_Citas.Controls.Add(this.panel_Citas_Dia);
+            this.panel_Citas.Controls.Add(this.month_Calendario);
+            resources.ApplyResources(this.panel_Citas, "panel_Citas");
+            this.panel_Citas.Name = "panel_Citas";
+            // 
+            // btn_Citas_Editar
+            // 
+            this.btn_Citas_Editar.FlatAppearance.BorderColor = System.Drawing.Color.Plum;
+            this.btn_Citas_Editar.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.btn_Citas_Editar, "btn_Citas_Editar");
+            this.btn_Citas_Editar.Name = "btn_Citas_Editar";
+            this.btn_Citas_Editar.UseVisualStyleBackColor = true;
+            // 
+            // btn_Citas_Eliminar
+            // 
+            this.btn_Citas_Eliminar.FlatAppearance.BorderColor = System.Drawing.Color.Plum;
+            this.btn_Citas_Eliminar.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.btn_Citas_Eliminar, "btn_Citas_Eliminar");
+            this.btn_Citas_Eliminar.Name = "btn_Citas_Eliminar";
+            this.btn_Citas_Eliminar.UseVisualStyleBackColor = true;
+            // 
+            // btn_Citas_Agregar
+            // 
+            this.btn_Citas_Agregar.FlatAppearance.BorderColor = System.Drawing.Color.Plum;
+            this.btn_Citas_Agregar.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.btn_Citas_Agregar, "btn_Citas_Agregar");
+            this.btn_Citas_Agregar.Name = "btn_Citas_Agregar";
+            this.btn_Citas_Agregar.UseVisualStyleBackColor = true;
+            // 
+            // panel_Citas_Dia
+            // 
+            this.panel_Citas_Dia.BackColor = System.Drawing.Color.GhostWhite;
+            this.panel_Citas_Dia.Controls.Add(this.srl_Citas_Dia);
+            resources.ApplyResources(this.panel_Citas_Dia, "panel_Citas_Dia");
+            this.panel_Citas_Dia.Name = "panel_Citas_Dia";
+            // 
+            // srl_Citas_Dia
+            // 
+            resources.ApplyResources(this.srl_Citas_Dia, "srl_Citas_Dia");
+            this.srl_Citas_Dia.Name = "srl_Citas_Dia";
+            // 
+            // month_Calendario
+            // 
+            this.month_Calendario.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.month_Calendario, "month_Calendario");
+            this.month_Calendario.Name = "month_Calendario";
+            this.month_Calendario.TitleBackColor = System.Drawing.Color.Plum;
+            this.month_Calendario.TrailingForeColor = System.Drawing.Color.LightPink;
             // 
             // panel_Pacientes
             // 
@@ -103,6 +158,7 @@
             resources.ApplyResources(this.btn_Paciente_Agregar, "btn_Paciente_Agregar");
             this.btn_Paciente_Agregar.Name = "btn_Paciente_Agregar";
             this.btn_Paciente_Agregar.UseVisualStyleBackColor = false;
+            this.btn_Paciente_Agregar.Click += new System.EventHandler(this.btn_Paciente_Agregar_Click_1);
             // 
             // panel_Trabajo
             // 
@@ -186,61 +242,6 @@
             this.hamburguesa_Cerrada.UseVisualStyleBackColor = true;
             this.hamburguesa_Cerrada.Click += new System.EventHandler(this.hamburguesa_Cerrada_Click);
             // 
-            // panel_Citas
-            // 
-            this.panel_Citas.BackColor = System.Drawing.Color.Plum;
-            this.panel_Citas.Controls.Add(this.btn_Citas_Editar);
-            this.panel_Citas.Controls.Add(this.btn_Citas_Eliminar);
-            this.panel_Citas.Controls.Add(this.btn_Citas_Agregar);
-            this.panel_Citas.Controls.Add(this.panel_Citas_Dia);
-            this.panel_Citas.Controls.Add(this.month_Calendario);
-            resources.ApplyResources(this.panel_Citas, "panel_Citas");
-            this.panel_Citas.Name = "panel_Citas";
-            // 
-            // month_Calendario
-            // 
-            this.month_Calendario.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.month_Calendario, "month_Calendario");
-            this.month_Calendario.Name = "month_Calendario";
-            this.month_Calendario.TitleBackColor = System.Drawing.Color.Plum;
-            this.month_Calendario.TrailingForeColor = System.Drawing.Color.LightPink;
-            // 
-            // panel_Citas_Dia
-            // 
-            this.panel_Citas_Dia.BackColor = System.Drawing.Color.GhostWhite;
-            this.panel_Citas_Dia.Controls.Add(this.srl_Citas_Dia);
-            resources.ApplyResources(this.panel_Citas_Dia, "panel_Citas_Dia");
-            this.panel_Citas_Dia.Name = "panel_Citas_Dia";
-            // 
-            // srl_Citas_Dia
-            // 
-            resources.ApplyResources(this.srl_Citas_Dia, "srl_Citas_Dia");
-            this.srl_Citas_Dia.Name = "srl_Citas_Dia";
-            // 
-            // btn_Citas_Agregar
-            // 
-            this.btn_Citas_Agregar.FlatAppearance.BorderColor = System.Drawing.Color.Plum;
-            this.btn_Citas_Agregar.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.btn_Citas_Agregar, "btn_Citas_Agregar");
-            this.btn_Citas_Agregar.Name = "btn_Citas_Agregar";
-            this.btn_Citas_Agregar.UseVisualStyleBackColor = true;
-            // 
-            // btn_Citas_Eliminar
-            // 
-            this.btn_Citas_Eliminar.FlatAppearance.BorderColor = System.Drawing.Color.Plum;
-            this.btn_Citas_Eliminar.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.btn_Citas_Eliminar, "btn_Citas_Eliminar");
-            this.btn_Citas_Eliminar.Name = "btn_Citas_Eliminar";
-            this.btn_Citas_Eliminar.UseVisualStyleBackColor = true;
-            // 
-            // btn_Citas_Editar
-            // 
-            this.btn_Citas_Editar.FlatAppearance.BorderColor = System.Drawing.Color.Plum;
-            this.btn_Citas_Editar.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.btn_Citas_Editar, "btn_Citas_Editar");
-            this.btn_Citas_Editar.Name = "btn_Citas_Editar";
-            this.btn_Citas_Editar.UseVisualStyleBackColor = true;
-            // 
             // pantalla_Marco
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
@@ -252,13 +253,14 @@
             this.HelpButton = true;
             this.MaximizeBox = false;
             this.Name = "pantalla_Marco";
+            this.Load += new System.EventHandler(this.pantalla_Marco_Load);
             this.panel_Contenedor.ResumeLayout(false);
             this.panel_Contenedor.PerformLayout();
+            this.panel_Citas.ResumeLayout(false);
+            this.panel_Citas_Dia.ResumeLayout(false);
             this.panel_Pacientes.ResumeLayout(false);
             this.panel_MenuAbierto.ResumeLayout(false);
             this.panel_MenuCerrado.ResumeLayout(false);
-            this.panel_Citas.ResumeLayout(false);
-            this.panel_Citas_Dia.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

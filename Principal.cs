@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Agenda
+﻿namespace Agenda
 {
+    using System;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using Conexion;
     public partial class pantalla_Marco : Form
     {
         public pantalla_Marco()
@@ -164,6 +158,18 @@ namespace Agenda
                     panel_Pacientes.Visible = false;
                 }
             }
+        }
+
+        private void pantalla_Marco_Load(object sender, EventArgs e)
+        {
+            Conexion.Conexion prueba = new Conexion.Conexion();
+        }
+
+        private void btn_Paciente_Agregar_Click_1(object sender, EventArgs e)
+        {
+            //Agregar paciente
+            AgregarPaciente VentanaAgregar = new AgregarPaciente();
+            VentanaAgregar.Visible = true;
         }
     }
 }
