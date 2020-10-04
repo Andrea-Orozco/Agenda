@@ -149,6 +149,7 @@
             resources.ApplyResources(this.btn_Paciente_Editar, "btn_Paciente_Editar");
             this.btn_Paciente_Editar.Name = "btn_Paciente_Editar";
             this.btn_Paciente_Editar.UseVisualStyleBackColor = false;
+            this.btn_Paciente_Editar.Click += new System.EventHandler(this.btn_Paciente_Editar_Click);
             // 
             // btn_Paciente_Agregar
             // 

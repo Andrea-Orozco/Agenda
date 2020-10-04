@@ -81,6 +81,18 @@
       <DependentUpon>AgregarPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="Conexion\Conexion.cs" />
+    <Compile Include="EditarSeleccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarSeleccion.Designer.cs">
+      <DependentUpon>EditarSeleccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarUsuario.Designer.cs">
+      <DependentUpon>EditarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +103,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AgregarPaciente.resx">
       <DependentUpon>AgregarPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarSeleccion.resx">
+      <DependentUpon>EditarSeleccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarUsuario.resx">
+      <DependentUpon>EditarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.es-419.resx">
       <DependentUpon>Principal.cs</DependentUpon>

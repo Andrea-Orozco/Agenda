@@ -171,5 +171,11 @@
             AgregarPaciente VentanaAgregar = new AgregarPaciente();
             VentanaAgregar.Visible = true;
         }
+
+        private void btn_Paciente_Editar_Click(object sender, EventArgs e)
+        {
+            EditarUsuario VentanaEditar = new EditarUsuario();
+            VentanaEditar.Visible = true;
+        }
     }
 }
