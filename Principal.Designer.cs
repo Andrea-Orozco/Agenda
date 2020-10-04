@@ -31,11 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(pantalla_Marco));
             this.panel_Contenedor = new System.Windows.Forms.Panel();
             this.panel_Citas = new System.Windows.Forms.Panel();
+            this.panel_Citas_Dia = new System.Windows.Forms.DataGridView();
             this.btn_Citas_Editar = new System.Windows.Forms.Button();
             this.btn_Citas_Eliminar = new System.Windows.Forms.Button();
             this.btn_Citas_Agregar = new System.Windows.Forms.Button();
-            this.panel_Citas_Dia = new System.Windows.Forms.Panel();
-            this.srl_Citas_Dia = new System.Windows.Forms.VScrollBar();
             this.month_Calendario = new System.Windows.Forms.MonthCalendar();
             this.panel_Pacientes = new System.Windows.Forms.Panel();
             this.btn_Paciente_Buscar = new System.Windows.Forms.Button();
@@ -52,7 +51,7 @@
             this.hamburguesa_Cerrada = new System.Windows.Forms.Button();
             this.panel_Contenedor.SuspendLayout();
             this.panel_Citas.SuspendLayout();
-            this.panel_Citas_Dia.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panel_Citas_Dia)).BeginInit();
             this.panel_Pacientes.SuspendLayout();
             this.panel_MenuAbierto.SuspendLayout();
             this.panel_MenuCerrado.SuspendLayout();
@@ -71,13 +70,23 @@
             // panel_Citas
             // 
             this.panel_Citas.BackColor = System.Drawing.Color.Plum;
+            this.panel_Citas.Controls.Add(this.panel_Citas_Dia);
             this.panel_Citas.Controls.Add(this.btn_Citas_Editar);
             this.panel_Citas.Controls.Add(this.btn_Citas_Eliminar);
             this.panel_Citas.Controls.Add(this.btn_Citas_Agregar);
-            this.panel_Citas.Controls.Add(this.panel_Citas_Dia);
             this.panel_Citas.Controls.Add(this.month_Calendario);
             resources.ApplyResources(this.panel_Citas, "panel_Citas");
             this.panel_Citas.Name = "panel_Citas";
+            // 
+            // panel_Citas_Dia
+            // 
+            this.panel_Citas_Dia.AllowUserToResizeColumns = false;
+            this.panel_Citas_Dia.AllowUserToResizeRows = false;
+            this.panel_Citas_Dia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            resources.ApplyResources(this.panel_Citas_Dia, "panel_Citas_Dia");
+            this.panel_Citas_Dia.MultiSelect = false;
+            this.panel_Citas_Dia.Name = "panel_Citas_Dia";
+            this.panel_Citas_Dia.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // btn_Citas_Editar
             // 
@@ -86,6 +95,7 @@
             resources.ApplyResources(this.btn_Citas_Editar, "btn_Citas_Editar");
             this.btn_Citas_Editar.Name = "btn_Citas_Editar";
             this.btn_Citas_Editar.UseVisualStyleBackColor = true;
+            this.btn_Citas_Editar.Click += new System.EventHandler(this.btn_Citas_Editar_Click);
             // 
             // btn_Citas_Eliminar
             // 
@@ -94,6 +104,7 @@
             resources.ApplyResources(this.btn_Citas_Eliminar, "btn_Citas_Eliminar");
             this.btn_Citas_Eliminar.Name = "btn_Citas_Eliminar";
             this.btn_Citas_Eliminar.UseVisualStyleBackColor = true;
+            this.btn_Citas_Eliminar.Click += new System.EventHandler(this.btn_Citas_Eliminar_Click);
             // 
             // btn_Citas_Agregar
             // 
@@ -102,26 +113,17 @@
             resources.ApplyResources(this.btn_Citas_Agregar, "btn_Citas_Agregar");
             this.btn_Citas_Agregar.Name = "btn_Citas_Agregar";
             this.btn_Citas_Agregar.UseVisualStyleBackColor = true;
-            // 
-            // panel_Citas_Dia
-            // 
-            this.panel_Citas_Dia.BackColor = System.Drawing.Color.GhostWhite;
-            this.panel_Citas_Dia.Controls.Add(this.srl_Citas_Dia);
-            resources.ApplyResources(this.panel_Citas_Dia, "panel_Citas_Dia");
-            this.panel_Citas_Dia.Name = "panel_Citas_Dia";
-            // 
-            // srl_Citas_Dia
-            // 
-            resources.ApplyResources(this.srl_Citas_Dia, "srl_Citas_Dia");
-            this.srl_Citas_Dia.Name = "srl_Citas_Dia";
+            this.btn_Citas_Agregar.Click += new System.EventHandler(this.btn_Citas_Agregar_Click);
             // 
             // month_Calendario
             // 
             this.month_Calendario.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.month_Calendario, "month_Calendario");
+            this.month_Calendario.MaxSelectionCount = 1;
             this.month_Calendario.Name = "month_Calendario";
             this.month_Calendario.TitleBackColor = System.Drawing.Color.Plum;
             this.month_Calendario.TrailingForeColor = System.Drawing.Color.LightPink;
+            this.month_Calendario.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.month_Calendario_DateChanged);
             // 
             // panel_Pacientes
             // 
@@ -140,6 +142,7 @@
             resources.ApplyResources(this.btn_Paciente_Buscar, "btn_Paciente_Buscar");
             this.btn_Paciente_Buscar.Name = "btn_Paciente_Buscar";
             this.btn_Paciente_Buscar.UseVisualStyleBackColor = false;
+            this.btn_Paciente_Buscar.Click += new System.EventHandler(this.btn_Paciente_Buscar_Click);
             // 
             // btn_Paciente_Editar
             // 
@@ -254,11 +257,12 @@
             this.HelpButton = true;
             this.MaximizeBox = false;
             this.Name = "pantalla_Marco";
+            this.Activated += new System.EventHandler(this.pantalla_Marco_Activated);
             this.Load += new System.EventHandler(this.pantalla_Marco_Load);
             this.panel_Contenedor.ResumeLayout(false);
             this.panel_Contenedor.PerformLayout();
             this.panel_Citas.ResumeLayout(false);
-            this.panel_Citas_Dia.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panel_Citas_Dia)).EndInit();
             this.panel_Pacientes.ResumeLayout(false);
             this.panel_MenuAbierto.ResumeLayout(false);
             this.panel_MenuCerrado.ResumeLayout(false);
@@ -284,11 +288,10 @@
         private System.Windows.Forms.Button btn_Paciente_Agregar;
         private System.Windows.Forms.Panel panel_Citas;
         private System.Windows.Forms.MonthCalendar month_Calendario;
-        private System.Windows.Forms.Panel panel_Citas_Dia;
-        private System.Windows.Forms.VScrollBar srl_Citas_Dia;
         private System.Windows.Forms.Button btn_Citas_Editar;
         private System.Windows.Forms.Button btn_Citas_Eliminar;
         private System.Windows.Forms.Button btn_Citas_Agregar;
+        private System.Windows.Forms.DataGridView panel_Citas_Dia;
     }
 }
 

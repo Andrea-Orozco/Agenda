@@ -1,6 +1,8 @@
 ﻿namespace Agenda
 {
     using System;
+    using System.Collections.Generic;
+    using System.Data;
     using System.Drawing;
     using System.Windows.Forms;
     using Conexion;
@@ -32,7 +34,6 @@
                 panel_Citas.Location = new Point(46, 1);
 
                 panel_Citas_Dia.Width = 422;
-                srl_Citas_Dia.Location = new Point(409, 0);
                 month_Calendario.Location = new Point(465, 35);
                 btn_Citas_Agregar.Location = new Point(474, 216);
                 btn_Citas_Editar.Location = new Point(620, 216);
@@ -61,7 +62,6 @@
                 panel_Citas.Location = new Point(135, 1);
 
                 panel_Citas_Dia.Width = 322;
-                srl_Citas_Dia.Location = new Point(309, 0);
                 month_Calendario.Location = new Point(365, 35);
                 btn_Citas_Agregar.Location = new Point(374, 216);
                 btn_Citas_Editar.Location = new Point(520, 216);
@@ -131,7 +131,20 @@
                 {
                     panel_Pacientes.Visible = false;
                 }
+
+                try
+                {
+                    Conexion.Conexion Conectar = new Conexion.Conexion();
+                    DataTable Resultados = new DataTable();
+                    Resultados = Conectar.BuscarCitas(month_Calendario.SelectionRange.Start.ToString("yyyy/MM/dd"));
+                    panel_Citas_Dia.DataSource = Resultados;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show($"Ocurrio un error: {ex.Message.ToString()}");
+                }
             }
+            
         }
 
         private void btn_CitaCerrado_Click(object sender, EventArgs e)
@@ -147,7 +160,6 @@
                 panel_Citas.Location = new Point(46, 1);
 
                 panel_Citas_Dia.Width = 422;
-                srl_Citas_Dia.Location = new Point(409,0);
                 month_Calendario.Location = new Point(465,35);
                 btn_Citas_Agregar.Location = new Point(474,216);
                 btn_Citas_Editar.Location = new Point(620, 216);
@@ -157,6 +169,19 @@
                 {
                     panel_Pacientes.Visible = false;
                 }
+
+                try
+                {
+                    Conexion.Conexion Conectar = new Conexion.Conexion();
+                    DataTable Resultados = new DataTable();
+                    Resultados = Conectar.BuscarCitas(month_Calendario.SelectionRange.Start.ToString("yyyy/MM/dd"));
+                    panel_Citas_Dia.DataSource = Resultados;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocurrio un error: {ex.Message.ToString()}");
+                }
+
             }
         }
 
@@ -176,6 +201,99 @@
         {
             EditarUsuario VentanaEditar = new EditarUsuario();
             VentanaEditar.Visible = true;
+        }
+
+        private void btn_Citas_Agregar_Click(object sender, EventArgs e)
+        {
+            AgregarCita VentanaAgregarCita = new AgregarCita();
+            VentanaAgregarCita.Show();
+        }
+
+        private void CambioCalendario()
+        {
+            try
+            {
+                Conexion.Conexion Conectar = new Conexion.Conexion();
+                DataTable Resultados = new DataTable();
+                Resultados = Conectar.BuscarCitas(month_Calendario.SelectionRange.Start.ToString("yyyy/MM/dd"));
+                panel_Citas_Dia.DataSource = Resultados;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrio un error: {ex.Message.ToString()}");
+            }
+        }
+
+        private void month_Calendario_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            CambioCalendario();
+        }
+
+        private void btn_Citas_Eliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewCell Informacion = panel_Citas_Dia.SelectedRows[0].Cells[3];
+                string codigo = Informacion.Value.ToString();
+                string fecha = month_Calendario.SelectionRange.Start.ToString("yyyy/MM/dd");
+
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show("¿Estas segura de eliminar la cita?","El cambio es permanente", buttons);
+                if (result == DialogResult.Yes)
+                {
+                    Conexion.Conexion Conectar = new Conexion.Conexion();
+                    if(Conectar.EliminarCita(fecha,codigo))
+                    {
+                        CambioCalendario();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Ocurrio un error: {Conectar.Error}");
+                    }
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Selecciona la fila completa e intenta de nuevo.");
+            }
+            
+        }
+
+        private void pantalla_Marco_Activated(object sender, EventArgs e)
+        {
+            CambioCalendario();
+        }
+
+        private void btn_Citas_Editar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewCell Informacion = panel_Citas_Dia.SelectedRows[0].Cells[3];
+                string codigo = Informacion.Value.ToString();
+                string fecha = month_Calendario.SelectionRange.Start.ToString("yyyy/MM/dd");
+                DataGridViewCell Info = panel_Citas_Dia.SelectedRows[0].Cells[4];
+                string cita = Info.Value.ToString();
+                if (!string.IsNullOrEmpty(codigo) || !string.IsNullOrEmpty(fecha) || !string.IsNullOrEmpty(codigo))
+                {
+                    EditarCita VentanaEditarCita = new EditarCita(fecha,codigo,cita);
+                    VentanaEditarCita.Show();
+                }
+                else
+                {
+                    MessageBox.Show($"Avisalé a Andrea hay un error raro.");
+                }
+            }
+            catch
+            {
+                MessageBox.Show($"Selecciona la fila completa e intenta de nuevo.");
+            }
+        }
+
+        private void btn_Paciente_Buscar_Click(object sender, EventArgs e)
+        {
+            BuscarPacientes VentanaBuscarPacientes = new BuscarPacientes();
+            VentanaBuscarPacientes.Show();
         }
     }
 }

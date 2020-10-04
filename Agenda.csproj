@@ -74,13 +74,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarCita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarCita.Designer.cs">
+      <DependentUpon>AgregarCita.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgregarPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AgregarPaciente.Designer.cs">
       <DependentUpon>AgregarPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="BuscarPacientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarPacientes.Designer.cs">
+      <DependentUpon>BuscarPacientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Conexion\ComboboxItem.cs" />
     <Compile Include="Conexion\Conexion.cs" />
+    <Compile Include="EditarCita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarCita.Designer.cs">
+      <DependentUpon>EditarCita.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditarSeleccion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +112,12 @@
     <Compile Include="EditarUsuario.Designer.cs">
       <DependentUpon>EditarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="HistorialProcedimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialProcedimientos.Designer.cs">
+      <DependentUpon>HistorialProcedimientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,14 +126,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AgregarCita.resx">
+      <DependentUpon>AgregarCita.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarPaciente.resx">
       <DependentUpon>AgregarPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarPacientes.resx">
+      <DependentUpon>BuscarPacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarCita.resx">
+      <DependentUpon>EditarCita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditarSeleccion.resx">
       <DependentUpon>EditarSeleccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditarUsuario.resx">
       <DependentUpon>EditarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialProcedimientos.resx">
+      <DependentUpon>HistorialProcedimientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.es-419.resx">
       <DependentUpon>Principal.cs</DependentUpon>
