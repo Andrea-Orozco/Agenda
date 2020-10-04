@@ -26,5 +26,10 @@ namespace Agenda
                 }
             }
         }
+
+        private void btn_Aceptar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

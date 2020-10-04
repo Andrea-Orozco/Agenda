@@ -57,6 +57,7 @@
             this.btn_Aceptar.Text = "ok";
             this.btn_Aceptar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Aceptar.UseVisualStyleBackColor = true;
+            this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
             // 
             // HistorialProcedimientos
             // 
